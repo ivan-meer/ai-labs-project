@@ -1,10 +1,8 @@
-
+# 🧠 Система управления роем ИИ-агентов
 
 <div align="center">
 
-![Swarm AI Banner](assets/img/header.jpg)
-
-# 🧠 Система управления роем ИИ-агентов
+![Swarm AI Banner](assets/img/banner.png)
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.95.0+-green.svg?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -71,8 +69,8 @@
 <div align="center">
   <table>
     <tr>
-      <td><img src="assets/img/vizualization.png" alt="Управление агентами"></td>
-      <td><img src="assets/img/timeline.png" alt="Визуализация процессов"></td>
+      <td><img src="assets/img/ui.png" alt="Управление агентами"></td>
+      <td><img src="assets/img/process_screenshot.png" alt="Визуализация процессов"></td>
     </tr>
     <tr>
       <td align="center"><em>Интерфейс управления агентами</em></td>
@@ -313,8 +311,8 @@ graph LR
     end
     
     E --> F[Создание собственных агентов]
-    F --> G[Complex Workflow Design]
-    G --> H[Swarm Optimization]
+    F --> G[Построение сложных рабочих процессов]
+    G --> H[Оптимизация системы роя]
     
     subgraph Проектная работа
         F
@@ -386,7 +384,7 @@ mindmap
 ---
 
 <div align="center">
-  <img src="assets/img/banner.png" width="100%" alt="Swarm AI">
+  <img src="https://via.placeholder.com/900x100/1a1e26/3a76f9?text=Система+управления+роем+ИИ-агентов" width="100%" alt="Swarm AI">
   <p>
     <a href="https://github.com/yourusername/swarm-ai-system/issues">Сообщить о проблеме</a> •
     <a href="https://github.com/yourusername/swarm-ai-system/issues">Запросить функцию</a> •

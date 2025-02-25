@@ -62,15 +62,15 @@
 ## 📸 Screenshots
 
 <div align="center">
-  <img src="https://via.placeholder.com/800x450/1a1e26/3a76f9?text=Dashboard+Screenshot" width="80%" alt="Dashboard Screenshot">
+  <img src="assets/img/ui.png" width="80%" alt="Dashboard Screenshot">
   <p><em>Main dashboard showing agent status and system performance</em></p>
 </div>
 
 <div align="center">
   <table>
     <tr>
-      <td><img src="https://via.placeholder.com/400x300/1a1e26/4adf83?text=Agent+Management" alt="Agent Management"></td>
-      <td><img src="https://via.placeholder.com/400x300/1a1e26/df4a7f?text=Process+Visualization" alt="Process Visualization"></td>
+      <td><img src="assets/img/ui.png" alt="Agent Management"></td>
+      <td><img src="assets/img/process_screenshot.png" alt="Process Visualization"></td>
     </tr>
     <tr>
       <td align="center"><em>Agent Management Interface</em></td>
@@ -188,7 +188,7 @@ flowchart TB
 > 
 > The central component is the Agent System which houses the Agent Registry (for managing available agent types), Runtime Environment (where agents execute their tasks), and Message System (facilitating communication between agents). All these components work together to create a coherent and robust swarm intelligence system that can solve complex problems through agent collaboration.
 >
-> For in-depth explanation, see the [Architecture Guide](docs/architecture/system_architecture/system_architecture.md)
+> For in-depth explanation, see the [Architecture Guide](docs/architecture/system_architecture.md)
 
 ### Agent Lifecycle
 
@@ -306,7 +306,7 @@ graph LR
         D
     end
     
-    subgraph Hands-on
+    subgraph Практика
         E
     end
     
@@ -314,7 +314,7 @@ graph LR
     F --> G[Complex Workflow Design]
     G --> H[Swarm Optimization]
     
-    subgraph Project Work
+    subgraph Проектная работа
         F
         G
         H
@@ -461,34 +461,35 @@ Please make sure your code follows the project's coding style and passes all tes
 
 - [Full Documentation](https://swarm-ai-docs.example.com)
 - [API Reference](https://swarm-ai-docs.example.com/api)
-- [Architecture Guide](docs/architecture/system_architecture/system_architecture.md)
+- [Architecture Guide](docs/architecture/system_architecture.md)
 - [Tutorial: Creating Your First Swarm](https://swarm-ai-docs.example.com/tutorials/first-swarm)
 
 ## 📊 Project Status
 
-This project is currently in **prototype** phase. Core functionality is implemented, but the system is being actively developed and may undergo significant changes.
+Этот проект в настоящее время находится в фазе **прототипа**. Основная функциональность реализована, но система активно разрабатывается и может претерпеть значительные изменения.
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+Этот проект лицензирован под лицензией MIT - см. файл [LICENSE](LICENSE) для подробностей.
 
-## 🙏 Acknowledgements
+## 🙏 Благодарности
 
-- [FastAPI](https://fastapi.tiangolo.com/) for the high-performance API framework
-- [Pydantic](https://docs.pydantic.dev/) for data validation and settings management
-- [React](https://reactjs.org/) for the frontend UI library
-- [SQLAlchemy](https://www.sqlalchemy.org/) for database ORM
-- [Recharts](https://recharts.org/) for visualization components
+- [FastAPI](https://fastapi.tiangolo.com/) за высокопроизводительный API фреймворк
+- [Pydantic](https://docs.pydantic.dev/) за валидацию данных и управление настройками
+- [React](https://reactjs.org/) за библиотеку UI фронтенда
+- [SQLAlchemy](https://www.sqlalchemy.org/) за ORM базы данных
+- [Recharts](https://recharts.org/) за компоненты визуализации
+- [Lightning.ai](https://lightning.ai/) за платформу для разработки и масштабирования ИИ-систем
 
 ---
 
 <div align="center">
-  <img src="https://via.placeholder.com/900x100/1a1e26/3a76f9?text=Swarm+AI+Management+System" width="100%" alt="Swarm AI">
+  <img src="https://via.placeholder.com/900x100/1a1e26/3a76f9?text=Система+управления+роем+ИИ-агентов" width="100%" alt="Swarm AI">
   <p>
-    <a href="https://github.com/yourusername/swarm-ai-system/issues">Report Bug</a> •
-    <a href="https://github.com/yourusername/swarm-ai-system/issues">Request Feature</a> •
+    <a href="https://github.com/yourusername/swarm-ai-system/issues">Сообщить о проблеме</a> •
+    <a href="https://github.com/yourusername/swarm-ai-system/issues">Запросить функцию</a> •
     <a href="https://twitter.com/your-twitter">Twitter</a> •
     <a href="https://discord.gg/your-discord">Discord</a>
   </p>
-  <p>Made with ❤️ by Your Team</p>
+  <p>Сделано с ❤️ Вашей командой</p>
 </div>
