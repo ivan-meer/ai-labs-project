@@ -188,7 +188,7 @@ flowchart TB
 > 
 > The central component is the Agent System which houses the Agent Registry (for managing available agent types), Runtime Environment (where agents execute their tasks), and Message System (facilitating communication between agents). All these components work together to create a coherent and robust swarm intelligence system that can solve complex problems through agent collaboration.
 >
-> For in-depth explanation, see the [Architecture Guide](docs/architecture/system_architecture.md).
+> For in-depth explanation, see the [Architecture Guide](docs/architecture/system_architecture/system_architecture.md)
 
 ### Agent Lifecycle
 
@@ -232,7 +232,7 @@ stateDiagram-v2
 > 
 > Understanding this lifecycle is crucial for effective agent management and troubleshooting. Each transition triggers specific events and logging in the system.
 > 
-> For implementation details, see the [Agent Lifecycle Documentation](docs/agents/agent_lifecycle.md).
+> For implementation details, see the [Agent Lifecycle Documentation](docs/agents/agent_lifecycle.md)
 
 ### Task Processing Sequence
 
@@ -285,7 +285,7 @@ sequenceDiagram
 > 
 > This workflow demonstrates the system's ability to decompose complex problems into manageable subtasks, distribute them to specialized agents, and reassemble the results into a coherent solution.
 > 
-> For practical implementation examples, see the [Task Processing Tutorial](docs/tutorials/task_processing.md).
+> For practical implementation examples, see the [Task Processing Tutorial](docs/tutorials/task_processing.md)
 
 ### Educational Learning Path
 
@@ -335,7 +335,7 @@ graph LR
 > 
 > This structured learning path ensures a comprehensive understanding of both theoretical principles and practical applications, allowing learners to progress from basic concepts to advanced system design.
 > 
-> Our documentation includes complete tutorials for each phase. Start with the [Learning Path Guide](docs/education/learning_path.md).
+> Our documentation includes complete tutorials for each phase. Start with the [Learning Path Guide](docs/education/learning_path.md)
 
 ### Core Components
 
@@ -461,7 +461,7 @@ Please make sure your code follows the project's coding style and passes all tes
 
 - [Full Documentation](https://swarm-ai-docs.example.com)
 - [API Reference](https://swarm-ai-docs.example.com/api)
-- [Architecture Guide](docs/architecture/system_architecture.md)
+- [Architecture Guide](docs/architecture/system_architecture/system_architecture.md)
 - [Tutorial: Creating Your First Swarm](https://swarm-ai-docs.example.com/tutorials/first-swarm)
 
 ## 📊 Project Status
