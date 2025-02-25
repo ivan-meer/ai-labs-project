@@ -2,7 +2,7 @@
 
 <div align="center">
 
-![Swarm AI Banner](assets/img/banner.png)
+![Swarm AI Banner](assets/img/header.jpg)
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.95.0+-green.svg?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
@@ -69,8 +69,8 @@
 <div align="center">
   <table>
     <tr>
-      <td><img src="assets/img/ui.png" alt="Agent Management"></td>
-      <td><img src="assets/img/process_screenshot.png" alt="Process Visualization"></td>
+      <td><img src="assets/img/vizualization.png" alt="Agent Management"></td>
+      <td><img src="assets/img/timeline.png" alt="Process Visualization"></td>
     </tr>
     <tr>
       <td align="center"><em>Agent Management Interface</em></td>
@@ -466,17 +466,17 @@ Please make sure your code follows the project's coding style and passes all tes
 
 ## 📊 Project Status
 
-Этот проект в настоящее время находится в фазе **прототипа**. Основная функциональность реализована, но система активно разрабатывается и может претерпеть значительные изменения.
+This project is currently in **prototype** phase. Core functionality is implemented, but the system is being actively developed and may undergo significant changes.
 
 ## 📜 License
 
-Этот проект лицензирован под лицензией MIT - см. файл [LICENSE](LICENSE) для подробностей.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 Благодарности
+## 🙏 Acknowledgements
 
-- [FastAPI](https://fastapi.tiangolo.com/) за высокопроизводительный API фреймворк
-- [Pydantic](https://docs.pydantic.dev/) за валидацию данных и управление настройками
-- [React](https://reactjs.org/) за библиотеку UI фронтенда
+- [FastAPI](https://fastapi.tiangolo.com/) for the high-performance API framework
+- [Pydantic](https://docs.pydantic.dev/) for data validation and settings management
+- [React](https://reactjs.org/) for the frontend UI library
 - [SQLAlchemy](https://www.sqlalchemy.org/) за ORM базы данных
 - [Recharts](https://recharts.org/) за компоненты визуализации
 - [Lightning.ai](https://lightning.ai/) за платформу для разработки и масштабирования ИИ-систем
@@ -484,12 +484,12 @@ Please make sure your code follows the project's coding style and passes all tes
 ---
 
 <div align="center">
-  <img src="https://via.placeholder.com/900x100/1a1e26/3a76f9?text=Система+управления+роем+ИИ-агентов" width="100%" alt="Swarm AI">
+  <img src="assets/img/banner.png" width="100%" alt="Swarm AI">
   <p>
-    <a href="https://github.com/yourusername/swarm-ai-system/issues">Сообщить о проблеме</a> •
-    <a href="https://github.com/yourusername/swarm-ai-system/issues">Запросить функцию</a> •
+    <a href="https://github.com/yourusername/swarm-ai-system/issues">Report Bug</a> •
+    <a href="https://github.com/yourusername/swarm-ai-system/issues">Request Feature</a> •
     <a href="https://twitter.com/your-twitter">Twitter</a> •
     <a href="https://discord.gg/your-discord">Discord</a>
   </p>
-  <p>Сделано с ❤️ Вашей командой</p>
+  <p>Made with ❤️ by Your Team</p>
 </div>
