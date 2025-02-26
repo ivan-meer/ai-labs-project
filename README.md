@@ -306,7 +306,7 @@ graph LR
         D
     end
     
-    subgraph Практика
+    subgraph Hands-on
         E
     end
     
@@ -335,7 +335,7 @@ graph LR
 > 
 > This structured learning path ensures a comprehensive understanding of both theoretical principles and practical applications, allowing learners to progress from basic concepts to advanced system design.
 > 
-> Our documentation includes complete tutorials for each phase. Start with the [Learning Path Guide](docs/education/learning_path.md)
+> Our documentation includes complete tutorials for each phase. Start with the [Learning Path Guide](docs/education/learning_path.md).
 
 ### Core Components
 
@@ -477,9 +477,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [FastAPI](https://fastapi.tiangolo.com/) for the high-performance API framework
 - [Pydantic](https://docs.pydantic.dev/) for data validation and settings management
 - [React](https://reactjs.org/) for the frontend UI library
-- [SQLAlchemy](https://www.sqlalchemy.org/) за ORM базы данных
-- [Recharts](https://recharts.org/) за компоненты визуализации
-- [Lightning.ai](https://lightning.ai/) за платформу для разработки и масштабирования ИИ-систем
+- [SQLAlchemy](https://www.sqlalchemy.org/) for database ORM
+- [Recharts](https://recharts.org/) for visualization components
 
 ---
 

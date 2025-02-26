@@ -69,8 +69,8 @@
 <div align="center">
   <table>
     <tr>
-      <td><img src="assets/img/ui.png" alt="Управление агентами"></td>
-      <td><img src="assets/img/process_screenshot.png" alt="Визуализация процессов"></td>
+      <td><img src="assets/img/timeline.png" alt="Управление агентами"></td>
+      <td><img src="assets/img/vizualization.png" alt="Визуализация процессов"></td>
     </tr>
     <tr>
       <td align="center"><em>Интерфейс управления агентами</em></td>
