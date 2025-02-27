@@ -60,6 +60,9 @@
 
 ## 📸 Screenshots
 
+![](assets/img/hero.png)
+
+
 <div align="center">
   <img src="assets/img/ui.png" width="80%" alt="Dashboard Screenshot">
   <p><em>Main dashboard showing agent status and system performance</em></p>

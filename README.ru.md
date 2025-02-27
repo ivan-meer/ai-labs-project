@@ -20,6 +20,8 @@
 
 ## 🌟 Основные функции
 
+![](assets/img/hero.png)
+
 <table>
   <tr>
     <td width="50%">
@@ -60,6 +62,8 @@
 </table>
 
 ## 📸 Скриншоты
+
+![](assets/img/hero.png)
 
 <div align="center">
   <img src="assets/img/ui.png" width="80%" alt="Скриншот панели мониторинга">
