@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI-LAB</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', 'Segoe UI', sans-serif;
+    }
+    
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&display=swap');
+    
+    body {
+      background-color: #030318;
+      color: #ffffff;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+    
+    .hero {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 1;
+    }
+    
+    .hero-content {
+      text-align: center;
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+    }
+    
+    .hero-title {
+      font-size: 5.5rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      position: relative;
+      display: inline-block;
+      opacity: 0;
+      background: linear-gradient(to right, #5ee7ff, #2887ff 50%, #0055ff);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(94, 231, 255, 0.4);
+    }
+    
+    @keyframes gradientFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    
+    .hero-title.visible {
+      animation: titleAppear 2.5s forwards, gradientFlow 8s infinite ease;
+    }
+    
+    @keyframes titleAppear {
+      0% {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.95);
+        filter: blur(5px);
+      }
+      30% {
+        opacity: 0.5;
+        filter: blur(2px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+    
+    .outline-button {
+      display: inline-block;
+      padding: 0.9rem 2.8rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: #fff;
+      background: transparent;
+      border: 1px solid rgba(94, 231, 255, 0.5);
+      border-radius: 50px;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      transition: all 0.4s ease;
+      opacity: 0;
+      text-transform: uppercase;
+      box-shadow: 0 0 10px rgba(94, 231, 255, 0.2);
+    }
+    
+    .outline-button.visible {
+      animation: buttonAppear 1.8s forwards;
+      animation-delay: 1.2s;
+    }
+    
+    @keyframes buttonAppear {
+      0% {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .outline-button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg, 
+        transparent, 
+        rgba(94, 231, 255, 0.2), 
+        transparent
+      );
+      transition: all 0.6s ease;
+    }
+    
+    .outline-button:hover {
+      box-shadow: 0 0 15px rgba(94, 231, 255, 0.4);
+      border-color: rgba(94, 231, 255, 0.8);
+      transform: translateY(-2px);
+    }
+    
+    .outline-button:hover::before {
+      left: 100%;
+    }
+    
+    .glow-effect {
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 50px;
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      box-shadow: 
+        0 0 10px rgba(94, 231, 255, 0.5),
+        0 0 20px rgba(94, 231, 255, 0.3),
+        0 0 30px rgba(94, 231, 255, 0.1);
+      animation: glowPulse 2s infinite alternate;
+    }
+    
+    .outline-button:hover .glow-effect {
+      opacity: 1;
+    }
+    
+    @keyframes glowPulse {
+      0% {
+        opacity: 0.5;
+        box-shadow: 
+          0 0 5px rgba(94, 231, 255, 0.3),
+          0 0 10px rgba(94, 231, 255, 0.2);
+      }
+      100% {
+        opacity: 1;
+        box-shadow: 
+          0 0 15px rgba(94, 231, 255, 0.5),
+          0 0 25px rgba(94, 231, 255, 0.3),
+          0 0 35px rgba(94, 231, 255, 0.1);
+      }
+    }
+    
+    .neural-network {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 0;
+    }
+    
+    /* Медиазапросы для адаптивности */
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 3.8rem;
+      }
+      
+      .outline-button {
+        padding: 0.8rem 2.2rem;
+        font-size: 1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .outline-button {
+        padding: 0.7rem 2rem;
+        font-size: 0.9rem;
+      }
+    }
+    
+    .background-stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+    
+    .star {
+      position: absolute;
+      background-color: #fff;
+      border-radius: 50%;
+      opacity: 0;
+      animation: starFade var(--duration) infinite var(--delay);
+    }
+    
+    @keyframes starFade {
+      0%, 100% {
+        opacity: 0;
+      }
+      50% {
+        opacity: var(--opacity);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="background-stars" id="stars-container"></div>
+    <div class="neural-network">
+      <canvas id="neural-network-canvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title" id="hero-title">AI-LAB</h1>
+      <button class="outline-button" id="hero-button">
+        <span class="glow-effect"></span>
+        ПОДРОБНЕЕ
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Анимация появления элементов
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('hero-title').classList.add('visible');
+        document.getElementById('hero-button').classList.add('visible');
+      }, 500);
+      
+      // Создание звездного фона
+      createStars();
+    });
+    
+    // Функция для создания звездного фона
+    function createStars() {
+      const container = document.getElementById('stars-container');
+      const starsCount = window.innerWidth < 768 ? 70 : 150;
+      
+      for (let i = 0; i < starsCount; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        
+        // Случайные параметры для звезд
+        const size = 0.5 + Math.random() * 1.5;
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const opacity = 0.2 + Math.random() * 0.8;
+        const duration = 3 + Math.random() * 7;
+        const delay = Math.random() * 5;
+        
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.left = `${x}%`;
+        star.style.top = `${y}%`;
+        star.style.setProperty('--opacity', opacity);
+        star.style.setProperty('--duration', `${duration}s`);
+        star.style.setProperty('--delay', `${delay}s`);
+        
+        container.appendChild(star);
+      }
+    }
+
+    // Настройка нейронной сети
+    (function() {
+      const canvas = document.getElementById('neural-network-canvas');
+      const ctx = canvas.getContext('2d');
+      let width, height;
+      let mouseX = null, mouseY = null;
+      
+      // Точки и связи
+      const nodes = [];
+      const connections = [];
+      
+      // Настройки
+      const maxNodes = 80; // Меньше узлов
+      const maxConnections = 120; // Меньше связей для лучшей рассредоточенности
+      const connectionFadeSpeed = 0.002; // Медленнее исчезают
+      const connectionAppearSpeed = 0.001; // Медленнее появляются
+      const maxConnectionDistance = 300; // Увеличиваем дистанцию для рассредоточенности
+      const mouseInfluenceRadius = 250;
+      
+      // Цвета узлов - более разнообразные
+      const nodeColors = [
+        { r: 94, g: 231, b: 255 },   // Светло-голубой
+        { r: 43, g: 135, b: 255 },   // Синий
+        { r: 0, g: 85, b: 255 },     // Темно-синий
+        { r: 0, g: 220, b: 255 },    // Бирюзовый
+        { r: 70, g: 120, b: 255 },   // Голубой
+        { r: 150, g: 200, b: 255 }   // Светло-синий
+      ];
+      
+      // Получение случайного цвета для узла
+      const getRandomColor = () => {
+        const colorIndex = Math.floor(Math.random() * nodeColors.length);
+        return {...nodeColors[colorIndex], alpha: 0.2 + Math.random() * 0.7};
+      };
+      
+      // Настройка канваса по размеру экрана
+      function setupCanvas() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+        createNodes();
+      }
+      
+      // Создание узлов, равномерно распределенных по экрану
+      function createNodes() {
+        nodes.length = 0;
+        connections.length = 0;
+        
+        const nodeCount = Math.min(maxNodes, Math.floor(width * height / 8000));
+        
+        // Создаем сетку для равномерного распределения
+        const gridCellSize = Math.sqrt((width * height) / nodeCount);
+        const cols = Math.ceil(width / gridCellSize);
+        const rows = Math.ceil(height / gridCellSize);
+        
+        // Распределяем узлы по сетке с случайным смещением
+        for (let i = 0; i < nodeCount; i++) {
+          // Выбираем ячейку сетки
+          const col = Math.floor(Math.random() * cols);
+          const row = Math.floor(Math.random() * rows);
+          
+          // Базовые координаты ячейки
+          const baseX = col * gridCellSize;
+          const baseY = row * gridCellSize;
+          
+          // Случайное смещение внутри ячейки
+          const offsetX = Math.random() * gridCellSize;
+          const offsetY = Math.random() * gridCellSize;
+          
+          // Итоговые координаты
+          const x = Math.min(baseX + offsetX, width);
+          const y = Math.min(baseY + offsetY, height);
+          
+          // Хаотичная скорость и направление
+          const angle = Math.random() * Math.PI * 2;
+          const speed = 0.1 + Math.random() * 0.3;
+          
+          nodes.push({
+            x: x,
+            y: y,
+            radius: 1 + Math.random() * 2.5,
+            color: getRandomColor(),
+            vx: Math.cos(angle) * speed,
+            vy: Math.sin(angle) * speed,
+            pulseSpeed: 0.005 + Math.random() * 0.02,
+            pulsePhase: Math.random() * Math.PI * 2,
+            // Параметры хаотичного движения
+            rotationRadius: 5 + Math.random() * 15,
+            rotationSpeed: 0.0005 + Math.random() * 0.002,
+            rotationAngle: Math.random() * Math.PI * 2,
+            baseX: x,
+            baseY: y
+          });
+        }
+      }
+      
+      // Создание случайной связи 
+      function createRandomConnection() {
+        if (connections.length >= maxConnections) return;
+        
+        // Выбираем два случайных узла
+        const nodeIndex1 = Math.floor(Math.random() * nodes.length);
+        let nodeIndex2 = Math.floor(Math.random() * nodes.length);
+        
+        // Избегаем выбора одного и того же узла
+        while (nodeIndex2 === nodeIndex1) {
+          nodeIndex2 = Math.floor(Math.random() * nodes.length);
+        }
+        
+        const nodeA = nodes[nodeIndex1];
+        const nodeB = nodes[nodeIndex2];
+        
+        // Проверка расстояния
+        const dx = nodeA.x - nodeB.x;
+        const dy = nodeA.y - nodeB.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        
+        if (distance > maxConnectionDistance) return;
+        
+        // Проверка на существующую связь
+        const exists = connections.some(conn => 
+          (conn.nodeA === nodeA && conn.nodeB === nodeB) || 
+          (conn.nodeA === nodeB && conn.nodeB === nodeA)
+        );
+        
+        if (exists) return;
+        
+        // Различные скорости для мистического эффекта
+        const speed = 0.1 + Math.random() * 0.8;
+        
+        // Создание новой связи
+        connections.push({
+          nodeA: nodeA,
+          nodeB: nodeB,
+          alpha: 0,
+          fadeIn: true,
+          speed: speed,
+          particleProgress: null,
+          thickness: 0.3 + Math.random() * 0.7,
+          startTime: Date.now() + Math.random() * 5000, // Разное время старта
+          flowDirection: Math.random() > 0.5 // Случайное направление движения частиц
+        });
+      }
+      
+      // Обновление связей
+      function updateConnections() {
+        const now = Date.now();
+        
+        // Создание новых связей с разными интервалами
+        if (Math.random() < 0.04 && connections.length < maxConnections) {
+          createRandomConnection();
+        }
+        
+        // Обновление существующих связей
+        for (let i = connections.length - 1; i >= 0; i--) {
+          const conn = connections[i];
+          
+          // Проверка времени запуска
+          if (now < conn.startTime) continue;
+          
+          // Затухание или появление связи
+          if (conn.fadeIn) {
+            conn.alpha += connectionAppearSpeed * conn.speed;
+            if (conn.alpha >= 0.8) {
+              conn.alpha = 0.8;
+              // Случайное время жизни связи
+              if (Math.random() < 0.01) {
+                conn.fadeIn = false;
+              }
+            }
+          } else {
+            conn.alpha -= connectionFadeSpeed * conn.speed;
+            if (conn.alpha <= 0) {
+              // Удаление связи
+              connections.splice(i, 1);
+              continue;
+            }
+          }
+          
+          // Случайное появление частицы
+          if (conn.particleProgress === null && Math.random() < 0.004 * conn.speed) {
+            conn.particleProgress = conn.flowDirection ? 0 : 1;
+          }
+          
+          // Обновление частицы
+          if (conn.particleProgress !== null) {
+            conn.particleProgress += (conn.flowDirection ? 1 : -1) * 0.008 * conn.speed;
+            if (conn.particleProgress > 1 || conn.particleProgress < 0) {
+              conn.particleProgress = null;
+            }
+          }
+        }
+      }
+      
+      // Обновление узлов с хаотичным движением
+      function updateNodes() {
+        const now = Date.now() * 0.001; // время в секундах для плавности
+        
+        for (let i = 0; i < nodes.length; i++) {
+          const node = nodes[i];
+          
+          // Хаотичное вращение вокруг базовой точки
+          node.rotationAngle += node.rotationSpeed * (1 + Math.sin(now * 0.5) * 0.3);
+          
+          // Новые координаты с учетом вращения
+          node.x = node.baseX + Math.cos(node.rotationAngle) * node.rotationRadius;
+          node.y = node.baseY + Math.sin(node.rotationAngle) * node.rotationRadius;
+          
+          // Обновление базовой точки с небольшим дрейфом
+          node.baseX += node.vx * (1 + Math.sin(now) * 0.5);
+          node.baseY += node.vy * (1 + Math.cos(now) * 0.5);
+          
+          // Случайные изменения направления
+          if (Math.random() < 0.01) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = 0.1 + Math.random() * 0.2;
+            node.vx = Math.cos(angle) * speed;
+            node.vy = Math.sin(angle) * speed;
+          }
+          
+          // Влияние мыши, если она есть
+          if (mouseX !== null && mouseY !== null) {
+            const dxMouse = mouseX - node.x;
+            const dyMouse = mouseY - node.y;
+            const distToMouse = Math.sqrt(dxMouse * dxMouse + dyMouse * dyMouse);
+            
+            if (distToMouse < mouseInfluenceRadius) {
+              // Точки реагируют на мышь - приближаются или отдаляются
+              const factor = (1 - distToMouse / mouseInfluenceRadius) * 0.02;
+              node.baseX += dxMouse * factor;
+              node.baseY += dyMouse * factor;
+            }
+          }
+          
+          // Изменение цвета/яркости
+          node.pulsePhase += node.pulseSpeed;
+          
+          // Отражение от краев
+          const margin = 50;
+          if (node.baseX < margin) {
+            node.baseX = margin;
+            node.vx *= -1;
+          } else if (node.baseX > width - margin) {
+            node.baseX = width - margin;
+            node.vx *= -1;
+          }
+          
+          if (node.baseY < margin) {
+            node.baseY = margin;
+            node.vy *= -1;
+          } else if (node.baseY > height - margin) {
+            node.baseY = height - margin;
+            node.vy *= -1;
+          }
+        }
+      }
+      
+      // Отрисовка
+      function draw() {
+        ctx.clearRect(0, 0, width, height);
+        
+        // Эффект свечения в центре
+        const grd = ctx.createRadialGradient(width/2, height/2, 5, width/2, height/2, height/3);
+        grd.addColorStop(0, "rgba(43, 135, 255, 0.03)");
+        grd.addColorStop(1, "rgba(0, 0, 0, 0)");
+        
+        ctx.fillStyle = grd;
+        ctx.fillRect(0, 0, width, height);
+        
+        // Отрисовка связей с градиентами
+        for (let i = 0; i < connections.length; i++) {
+          const conn = connections[i];
+          const nodeA = conn.nodeA;
+          const nodeB = conn.nodeB;
+          
+          // Проверка времени запуска
+          if (Date.now() < conn.startTime) continue;
+          
+          // Создаем градиент между цветами узлов
+          const gradient = ctx.createLinearGradient(
+            nodeA.x, nodeA.y, 
+            nodeB.x, nodeB.y
+          );
+          
+          // Цвета двух узлов
+          const colorA = nodeA.color;
+          const colorB = nodeB.color;
+          
+          gradient.addColorStop(0, `rgba(${colorA.r}, ${colorA.g}, ${colorA.b}, ${conn.alpha})`);
+          gradient.addColorStop(1, `rgba(${colorB.r}, ${colorB.g}, ${colorB.b}, ${conn.alpha})`);
+          
+          // Отрисовка линии с градиентом
+          ctx.beginPath();
+          ctx.moveTo(nodeA.x, nodeA.y);
+          ctx.lineTo(nodeB.x, nodeB.y);
+          ctx.strokeStyle = gradient;
+          ctx.lineWidth = conn.thickness;
+          ctx.stroke();
+          
+          // Отрисовка движущейся частицы
+          if (conn.particleProgress !== null) {
+            const x = nodeA.x + (nodeB.x - nodeA.x) * conn.particleProgress;
+            const y = nodeA.y + (nodeB.y - nodeA.y) * conn.particleProgress;
+            
+            // Определяем цвет частицы в зависимости от её положения
+            const particleColorProgress = conn.particleProgress;
+            const r = Math.floor(colorA.r * (1 - particleColorProgress) + colorB.r * particleColorProgress);
+            const g = Math.floor(colorA.g * (1 - particleColorProgress) + colorB.g * particleColorProgress);
+            const b = Math.floor(colorA.b * (1 - particleColorProgress) + colorB.b * particleColorProgress);
+            
+            // Свечение вокруг частицы
+            const glowRadius = 3 + Math.sin(Date.now() * 0.01) * 1.5;
+            const particleGradient = ctx.createRadialGradient(x, y, 0, x, y, glowRadius);
+            particleGradient.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0.8)`);
+            particleGradient.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+            
+            ctx.beginPath();
+            ctx.fillStyle = particleGradient;
+            ctx.arc(x, y, glowRadius, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Сама частица
+            ctx.beginPath();
+            ctx.arc(x, y, 1.2, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${r + 50}, ${g + 50}, ${b + 50}, 0.9)`;
+            ctx.fill();
+          }
+        }
+        
+        // Отрисовка узлов
+        for (let i = 0; i < nodes.length; i++) {
+          const node = nodes[i];
+          const pulseFactor = 0.6 + Math.sin(node.pulsePhase) * 0.4;
+          
+          // Свечение вокруг узла
+          const c = node.color;
+          const glowRadius = node.radius * 3 * pulseFactor;
+          
+          const gradient = ctx.createRadialGradient(
+            node.x, node.y, 0, 
+            node.x, node.y, glowRadius
+          );
+          
+          gradient.addColorStop(0, `rgba(${c.r}, ${c.g}, ${c.b}, ${c.alpha * 0.6})`);
+          gradient.addColorStop(1, `rgba(${c.r}, ${c.g}, ${c.b}, 0)`);
+          
+          ctx.beginPath();
+          ctx.fillStyle = gradient;
+          ctx.arc(node.x, node.y, glowRadius, 0, Math.PI * 2);
+          ctx.fill();
+          
+          // Узел
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, node.radius * pulseFactor, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${c.r}, ${c.g}, ${c.b}, ${c.alpha * pulseFactor})`;
+          ctx.fill();
+        }
+        
+        // Вызов следующего кадра
+        requestAnimationFrame(render);
+      }
+      
+      function render() {
+        updateNodes();
+        updateConnections();
+        draw();
+      }
+      
+      // Отслеживание мыши
+      document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+      });
+      
+      document.addEventListener('mouseleave', () => {
+        mouseX = null;
+        mouseY = null;
+      });
+      
+      // Инициализация
+      window.addEventListener('resize', setupCanvas);
+      setupCanvas();
+      render();
+    })();
+  </script>
+</body>
+</html>

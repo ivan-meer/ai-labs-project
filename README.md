@@ -15,16 +15,15 @@
 **An intuitive platform for managing, coordinating, and orchestrating multiple AI agents into a powerful swarm intelligence system**
 
 [Русская версия](README.ru.md) • [Key Features](#key-features) • [Installation](#installation) • [Quick Start](#quick-start) • [Documentation](#documentation) • [Architecture](#architecture) • [License](#license)
-
 </div>
 
-## 🌟 Key Features
-
+## 🌟 Key Features![
+![hero](assets/img/hero.png)
 <table>
   <tr>
     <td width="50%">
       <h3>🤖 Agent Management</h3>
-      <ul>
+      <ul
         <li>Create, configure, and manage specialized AI agents</li>
         <li>Real-time monitoring of agent status and performance</li>
         <li>Extensible agent templates for common roles</li>
